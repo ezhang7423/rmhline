@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script type="importmap">
+  {
+    "imports": {
+      "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+    }
+  }
+</script>
+
+
+<script type="module">
+    import { createApp } from 'vue'
+
+    createApp({
+        data() {
+            return {
+                inp: `\begin{table}
+    \raggedleft
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+        Task & HULC & Diffuser & LAD \\ \hline
+        Place in Slider & 2 & 3 & ~ \\ \hline
+        Open Drawer & 4 & 5 & ~ \\ \hline
+        Move Slider Right & ~ & ~ & ~ \\ \hline
+        Stack Block & f & ~ & ~ \\ \hline
+        Lift Blue Block Table & ~ & ~ & ~ \\ \hline
+    \end{tabular}
+\end{table}`,
+
+            }
+        },
+        computed: {
+            out() {
+                console.log(this.inp)
+                return this.inp.replaceAll('\\hline', '')
+            }
+        }
+    }).mount('#app')
+</script>
+
+<body>
+    <div id="app">
+        <textarea rows="15" v-model="inp" id="in" cols="50"></textarea>
+        <textarea rows="15" v-model="out" cols="50" disabled />
+        <div>hi</div>
+    </div>
+</body>
+
+</html>
